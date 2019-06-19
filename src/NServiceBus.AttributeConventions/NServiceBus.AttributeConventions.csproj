@@ -23,7 +23,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="NServiceBus.AttributeConventions.Contracts" Version="0.0.1" />
+    <PackageReference Include="NServiceBus.AttributeConventions.Contracts" Version="0.0.2" />
   </ItemGroup>
   
   <Target Name="AppVeyorPullRequestsTarget" AfterTargets="MinVer" Condition="'$(APPVEYOR_PULL_REQUEST_NUMBER)' != ''">
