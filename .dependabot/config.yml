@@ -8,7 +8,14 @@ update_configs:
           dependency_type: "all"
           update_type: "semver:patch"
   - package_manager: "dotnet:nuget"
-    directory: "/src/*Tests"
+    directory: "/src/NServiceBus.AttributeConventions.Tests"
+    update_schedule: "live"
+    automerged_updates:
+      - match:
+          dependency_type: "all"
+          update_type: "semver:minor"
+  - package_manager: "dotnet:nuget"
+    directory: "/src/NServiceBus.AttributeConventions.AcceptanceTests"
     update_schedule: "live"
     automerged_updates:
       - match:
