@@ -4,3 +4,4 @@ deleteBranchAfterMerge: true
 mergeMethod: squash
 blockingLabels:
 - blocked
+reportStatus: true
