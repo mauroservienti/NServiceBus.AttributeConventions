@@ -1,0 +1,6 @@
+requiredReviewers:
+-  mauroservienti
+deleteBranchAfterMerge: true
+mergeMethod: squash
+blockingLabels:
+- blocked
