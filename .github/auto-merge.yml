@@ -1,5 +1,5 @@
-requiredReviewers:
--  mauroservienti
+minApprovals:
+   OWNER: 1
 deleteBranchAfterMerge: true
 mergeMethod: squash
 blockingLabels:
