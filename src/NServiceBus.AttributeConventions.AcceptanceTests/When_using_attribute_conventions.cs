@@ -45,10 +45,8 @@ namespace NServiceBus.AttributeConventions.AcceptanceTests
                 });
             }
 
-            class Handler : IHandleMessages<Message>
+            class Handler(Context TestContext) : IHandleMessages<Message>
             {
-                public Context TestContext { get; set; }
-
                 public Task Handle(Message message, IMessageHandlerContext context)
                 {
                     TestContext.MessageReceived = true;
