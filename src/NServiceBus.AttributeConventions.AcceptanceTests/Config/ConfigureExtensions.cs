@@ -1,4 +1,5 @@
-﻿using NServiceBus.AcceptanceTesting.Support;
+﻿using Microsoft.Extensions.DependencyInjection;
+using NServiceBus.AcceptanceTesting.Support;
 
 namespace NServiceBus.AttributeConventions.AcceptanceTests
 {
@@ -11,7 +12,7 @@ namespace NServiceBus.AttributeConventions.AcceptanceTests
                 var type = runDescriptor.ScenarioContext.GetType();
                 while (type != typeof(object))
                 {
-                    r.RegisterSingleton(type, runDescriptor.ScenarioContext);
+                    r.AddSingleton(type, runDescriptor.ScenarioContext);
                     type = type.BaseType;
                 }
             });
