@@ -10,18 +10,17 @@ namespace NServiceBus.AttributeConventions.AcceptanceTests
 {
     public class DefaultServer : IEndpointSetupTemplate
     {
-        public Task<EndpointConfiguration> GetConfiguration(RunDescriptor runDescriptor, EndpointCustomizationConfiguration endpointConfiguration, Action<EndpointConfiguration> configurationBuilderCustomization)
+        public Task<EndpointConfiguration> GetConfiguration(RunDescriptor runDescriptor, EndpointCustomizationConfiguration endpointConfiguration,
+            Func<EndpointConfiguration, Task> configurationBuilderCustomization)
         {
             var types = endpointConfiguration.GetTypesScopedByTestClass();
             var typesToInclude= new List<Type>(types);
 
             var configuration = new EndpointConfiguration(endpointConfiguration.EndpointName);
 
+            configuration.UseSerialization<SystemJsonSerializer>();
             configuration.TypesToIncludeInScan(typesToInclude);
             configuration.EnableInstallers();
-
-            configuration.UseContainer(new AcceptanceTestingContainer());
-            configuration.DisableFeature<TimeoutManager>();
 
             var recoverability = configuration.Recoverability();
             recoverability.Delayed(delayed => delayed.NumberOfRetries(0));
@@ -30,14 +29,16 @@ namespace NServiceBus.AttributeConventions.AcceptanceTests
 
             var storageDir = StorageUtils.GetAcceptanceTestingTransportStorageDirectory();
 
-            var transportConfig = configuration.UseTransport<AcceptanceTestingTransport>()
-                .StorageDirectory(storageDir);
+            configuration.UseTransport(new AcceptanceTestingTransport()
+            {
+                StorageLocation = storageDir
+            });
 
             configuration.RegisterComponentsAndInheritanceHierarchy(runDescriptor);
 
             configurationBuilderCustomization(configuration);
 
-            runDescriptor.OnTestCompleted(summary => 
+            runDescriptor.OnTestCompleted(summary =>
             {
                 if (Directory.Exists(storageDir))
                 {
