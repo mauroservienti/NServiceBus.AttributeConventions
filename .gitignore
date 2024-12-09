@@ -15,6 +15,7 @@
 # Build dependencies and artifacts
 .dotnet/
 .build/
+nugets/
 
 # Build results
 [Dd]ebug/
