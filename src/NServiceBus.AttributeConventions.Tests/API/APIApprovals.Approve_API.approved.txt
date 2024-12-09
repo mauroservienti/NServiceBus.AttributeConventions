@@ -1,5 +1,4 @@
-﻿[assembly: System.Reflection.AssemblyMetadata("RepositoryUrl", "")]
-[assembly: System.Runtime.Versioning.TargetFramework(".NETStandard,Version=v2.0", FrameworkDisplayName="")]
+﻿[assembly: System.Reflection.AssemblyMetadata("RepositoryUrl", "https://github.com/mauroservienti/NServiceBus.AttributeConventions")]
 namespace NServiceBus
 {
     public static class EndpointConfigurationAttributeConventionsExtensions

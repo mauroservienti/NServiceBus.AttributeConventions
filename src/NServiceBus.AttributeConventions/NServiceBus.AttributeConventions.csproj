@@ -8,7 +8,7 @@
     <Authors>Mauro Servienti</Authors>
     <Description>NServiceBus Attribute Conventions</Description>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    <PackageIconUrl>https://raw.githubusercontent.com/mauroservienti/NServiceBus.AttributeConventions/assets/icon.png</PackageIconUrl>
+    <PackageIcon>icon.png</PackageIcon>
     <PackageTags>NServiceBus Attribute Conventions</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
@@ -18,6 +18,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="../../assets/icon.png" Pack="true" PackagePath="\"/>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="NServiceBus" Version="[7.4.0, 8.0.0)" />
     <PackageReference Include="MinVer" Version="4.2.0">
       <PrivateAssets>all</PrivateAssets>
@@ -25,13 +29,5 @@
     </PackageReference>
     <PackageReference Include="NServiceBus.AttributeConventions.Contracts" Version="[1.0.0, 2.0.0)" />
   </ItemGroup>
-
-  <Target Name="AppVeyorPullRequestsTarget" AfterTargets="MinVer" Condition="'$(APPVEYOR_PULL_REQUEST_NUMBER)' != ''">
-    <PropertyGroup>
-      <PackageVersion>$(MinVerMajor).$(MinVerMinor).$(MinVerPatch)-pr.$(APPVEYOR_PULL_REQUEST_NUMBER).build-id.$(APPVEYOR_BUILD_ID).$(MinVerPreRelease)</PackageVersion>
-      <PackageVersion Condition="'$(MinVerBuildMetadata)' != ''">$(PackageVersion)+$(MinVerBuildMetadata)</PackageVersion>
-      <Version>$(PackageVersion)</Version>
-    </PropertyGroup>
-  </Target>
 
 </Project>
