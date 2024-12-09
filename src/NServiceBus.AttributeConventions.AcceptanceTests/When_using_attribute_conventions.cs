@@ -16,7 +16,7 @@ namespace NServiceBus.AttributeConventions.AcceptanceTests
                 .Done(c => c.MessageReceived)
                 .Run();
 
-            Assert.True(context.MessageReceived);
+            Assert.That(context.MessageReceived, Is.True);
         }
 
         class Context : ScenarioContext
