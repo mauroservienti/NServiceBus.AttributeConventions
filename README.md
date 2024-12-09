@@ -1,6 +1,6 @@
 <img src="assets/icon.png" width="100" />
 
-# NServiceBus.AttributeConventions.Contracts
+# NServiceBus.AttributeConventions
 
 Enables to configure NServiceBus messages, commands, and events conventions by using attributes on message types:
 
@@ -18,7 +18,8 @@ public class SomethingHappened
 {}
 ```
 
-> NOTE: Attributes are defined in a separate [NServiceBus.AttributeConventions.Contracts](https://github.com/mauroservienti/NServiceBus.AttributeConventions.Contracts) package to prevent coupling endpoints to the NServiceBus version this feature depends on.
+> [!NOTE]
+> Attributes are defined in a separate [NServiceBus.AttributeConventions.Contracts](https://github.com/mauroservienti/NServiceBus.AttributeConventions.Contracts) package to prevent coupling endpoints to the NServiceBus version.
 > More information on [unobtrusive mode](https://docs.particular.net/nservicebus/messaging/unobtrusive-mode) can be found in the [NServiceBus documentation](https://docs.particular.net/nservicebus/messaging/unobtrusive-mode).
 
 To configure the endpoint:
