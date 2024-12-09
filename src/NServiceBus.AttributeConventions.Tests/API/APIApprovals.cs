@@ -13,9 +13,15 @@ namespace NServiceBus.AttributeConventions.Tests.API
         [MethodImpl(MethodImplOptions.NoInlining)]
         public void Approve_API()
         {
-            var publicApi = ApiGenerator.GeneratePublicApi(typeof(EndpointConfigurationAttributeConventionsExtensions).Assembly, options: null);
+            var publicApi = typeof(EndpointConfigurationAttributeConventionsExtensions).Assembly.GeneratePublicApi(new ApiGeneratorOptions()
+            {
+                ExcludeAttributes =
+                [
+                    "System.Runtime.Versioning.TargetFrameworkAttribute"
+                ]
+            });
 
-            Approvals.Verify(publicApi);
+            Approvals.Verify(publicApi.Replace(".git", ""));
         }
     }
 }
