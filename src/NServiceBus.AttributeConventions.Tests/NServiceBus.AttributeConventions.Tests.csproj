@@ -10,7 +10,7 @@
     <PackageReference Include="NServiceBus" Version="9.2.11" />
     <PackageReference Include="ApprovalTests" Version="7.0.0" />
     <PackageReference Include="NUnit" Version="4.6.0" />
-    <PackageReference Include="NUnit3TestAdapter" Version="5.0.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="6.2.0" />
     <PackageReference Include="PublicApiGenerator" Version="11.5.4" />
   </ItemGroup>
 
